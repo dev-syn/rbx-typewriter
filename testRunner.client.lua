@@ -1,4 +1,4 @@
-for i = 4,1 do
+for i = 4,1,-1 do
     warn(`Tests will begin in {i} seconds.`)
     task.wait(1);
 end
