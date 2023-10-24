@@ -191,7 +191,7 @@ function TypeWriter:Skip()
         self._thread = nil;
     end
     self._isWriting = false;
-    self.TargetElement.Text = self.Content or "";
+    if self.TargetElement then self.TargetElement.Text = self.Content or ""; end
     self.Skipped:Fire();
 end
 
