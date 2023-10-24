@@ -9,8 +9,8 @@
                     "$className": "Folder",
                     "_Index": {
                         "$className": "Folder",
-                        "stravant_goodsignal@0.21": { "$path": "Packages/stravant_goodsignal@0.21" },
-                        "roblox_testez@0.4.1": { "$path": "DevPackages/roblox_testez@0.4.1"}
+                        "stravant_goodsignal@0.21": { "$path": "Packages/_Index/stravant_goodsignal@0.21" },
+                        "roblox_testez@0.4.1": { "$path": "DevPackages/_Index/roblox_testez@0.4.1"}
                     },
                     "GoodSignal": { "$path": "Packages/GoodSignal.lua" },
                     "TestEZ": { "$path": "DevPackages/TestEZ.lua" },
