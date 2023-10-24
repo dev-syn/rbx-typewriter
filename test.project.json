@@ -1,0 +1,13 @@
+{
+    "name": "TypeWriter",
+    "tree": {
+        "$className": "DataModel",
+
+        "StarterPlayer": {
+            "StarterPlayerScripts": {
+                "TypeWriter": { "$path": "src" }
+            }
+        }
+
+    }
+}

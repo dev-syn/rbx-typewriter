@@ -1,0 +1,8 @@
+[package]
+name = "dev-syn/rbx-typewriter"
+version = "0.1.0"
+registry = "https://github.com/UpliftGames/wally-index"
+realm = "shared"
+
+[dependencies]
+GoodSignal = "stravant/goodsignal@0.2.1"

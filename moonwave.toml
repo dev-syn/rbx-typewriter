@@ -1,0 +1,6 @@
+gitSourceBranch = "main"
+changelog = true
+
+[footer]
+style = "dark"
+copyright = "Copyright © 2023 dev-syn. Built with Moonwave and Docusaurus"
