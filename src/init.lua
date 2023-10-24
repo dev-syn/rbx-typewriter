@@ -26,7 +26,7 @@ export type Schema_TypeWriter = {
 type TypeWriterObj = {
     _isWriting: boolean,
     _thread: thread?,
-    Content: string?,
+    Content: string,
     TargetElement: TextLabel?,
     TypeInterval: number,
     Finished: GoodSignal,
@@ -191,7 +191,7 @@ function TypeWriter:Skip()
         self._thread = nil;
     end
     self._isWriting = false;
-    self.TargetElement.Text = self.Content;
+    self.TargetElement.Text = self.Content or "";
     self.Skipped:Fire();
 end
 
