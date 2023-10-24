@@ -11,6 +11,14 @@
                     "Size": [40,1,40],
                     "Position": [0,0,0]
                 }
+            },
+            "Spawn": {
+                "$className": "SpawnLocation",
+                "$properties": {
+                    "Neutral": true,
+                    "Anchored": true,
+                    "Position": [0,1,0]
+                }
             }
         },
 
