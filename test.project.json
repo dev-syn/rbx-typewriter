@@ -3,6 +3,17 @@
     "tree": {
         "$className": "DataModel",
 
+        "Workspace": {
+            "Baseplate": {
+                "$className": "Part",
+                "$properties": {
+                    "Anchored": true,
+                    "Size": [40,1,40],
+                    "Position": [0,0,0]
+                }
+            }
+        },
+
         "StarterPlayer": {
             "StarterPlayerScripts": {
                 "Packages": {
