@@ -6,7 +6,14 @@
         "StarterPlayer": {
             "StarterPlayerScripts": {
                 "Packages": {
-                    "$path": "Packages",
+                    "$className": "Folder",
+                    "_Index": {
+                        "$className": "Folder",
+                        "stravant_goodsignal@0.21": { "$path": "Packages/stravant_goodsignal@0.21" },
+                        "roblox_testez@0.4.1": { "$path": "DevPackages/roblox_testez@0.4.1"}
+                    },
+                    "GoodSignal": { "$path": "Packages/GoodSignal" },
+                    "TestEZ": { "$path": "Packages/TestEZ" },
                     "TypeWriter": { "$path": "src" }
                 },
                 "testRunner": { "$path": "testRunner.client.lua"}
