@@ -16,7 +16,7 @@
                     "TestEZ": { "$path": "Packages/TestEZ" },
                     "TypeWriter": { "$path": "src" }
                 },
-                "testRunner": { "$path": "testRunner.client.lua"}
+                "testRunner": { "$path": "testRunner.client.lua" }
             }
         }
     }
