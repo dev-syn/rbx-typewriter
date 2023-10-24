@@ -12,8 +12,8 @@
                         "stravant_goodsignal@0.21": { "$path": "Packages/stravant_goodsignal@0.21" },
                         "roblox_testez@0.4.1": { "$path": "DevPackages/roblox_testez@0.4.1"}
                     },
-                    "GoodSignal": { "$path": "Packages/GoodSignal" },
-                    "TestEZ": { "$path": "Packages/TestEZ" },
+                    "GoodSignal": { "$path": "Packages/GoodSignal.lua" },
+                    "TestEZ": { "$path": "Packages/TestEZ.lua" },
                     "TypeWriter": { "$path": "src" }
                 },
                 "testRunner": { "$path": "testRunner.client.lua" }
