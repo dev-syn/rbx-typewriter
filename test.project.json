@@ -5,9 +5,12 @@
 
         "StarterPlayer": {
             "StarterPlayerScripts": {
-                "TypeWriter": { "$path": "src" }
+                "Packages": {
+                    "$path": "Packages",
+                    "TypeWriter": { "$path": "src" }
+                },
+                "testRunner": { "$path": "testRunner.client.lua"}
             }
         }
-
     }
 }
