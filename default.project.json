@@ -1,4 +1,5 @@
 {
     "name": "TypeWriter",
+    "globIgnorePaths": ["**/*.spec.lua"],
     "tree": { "$path": "src" }
 }
