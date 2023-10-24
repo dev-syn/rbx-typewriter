@@ -5,7 +5,12 @@ registry = "test"
 [[package]]
 name = "dev-syn/rbx-typewriter"
 version = "0.1.0"
-dependencies = [["GoodSignal", "stravant/goodsignal@0.2.1"]]
+dependencies = [["GoodSignal", "stravant/goodsignal@0.2.1"], ["TestEZ", "roblox/testez@0.4.1"]]
+
+[[package]]
+name = "roblox/testez"
+version = "0.4.1"
+dependencies = []
 
 [[package]]
 name = "stravant/goodsignal"

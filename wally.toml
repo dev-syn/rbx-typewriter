@@ -7,3 +7,5 @@ exclude = ["**/*.spec.lua"]
 
 [dependencies]
 GoodSignal = "stravant/goodsignal@0.2.1"
+[dev-dependencies]
+TestEZ = "roblox/testez@0.4.1"
