@@ -13,7 +13,7 @@
                         "roblox_testez@0.4.1": { "$path": "DevPackages/roblox_testez@0.4.1"}
                     },
                     "GoodSignal": { "$path": "Packages/GoodSignal.lua" },
-                    "TestEZ": { "$path": "Packages/TestEZ.lua" },
+                    "TestEZ": { "$path": "DevPackages/TestEZ.lua" },
                     "TypeWriter": { "$path": "src" }
                 },
                 "testRunner": { "$path": "testRunner.client.lua" }
