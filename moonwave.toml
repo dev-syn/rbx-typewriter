@@ -1,5 +1,8 @@
 gitSourceBranch = "main"
-changelog = true
+changelog = false
+classOrder = [
+    "TypeWriter"
+]
 
 [footer]
 style = "dark"
