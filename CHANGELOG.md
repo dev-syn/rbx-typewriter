@@ -9,4 +9,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.0] - 2023-10-25
 
-[0.0.1] -> [rbx-typewriter/releases/tag/v0.0.1](https://github.com/dev-syn/rbx-typewriter/releases/tag/v0.0.1)
+[0.0.1-alpha] -> [rbx-typewriter/releases/tag/0.1.0-alpha](https://github.com/dev-syn/rbx-typewriter/releases/tag/0.1.0-alpha)
