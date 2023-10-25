@@ -34,6 +34,7 @@ type TypeWriterObj = {
     _isDestroyed: boolean?,
     _thread: thread?,
     _state: WriterState,
+    SFXEnabled: boolean,
     Content: string,
     TargetElement: TextLabel?,
     TypeInterval: number,
@@ -161,6 +162,13 @@ function TypeWriter.new(content: string) : TypeWriter
         ]=]
 
         --[=[
+            Whether the TypeWriter type SFX is enabled or not. Defaults to true.
+
+            @prop SFXEnabled boolean
+            @within TypeWriter
+        ]=]
+
+        --[=[
             The content that will be typed through the TypeWriter.
             :::warning
             This is intended to be read-only if you wish to change the content use [TypeWriter:SetContent].
@@ -214,6 +222,7 @@ function TypeWriter.new(content: string) : TypeWriter
     local self: TypeWriterObj = {
         _isWriting = false,
         _state = WriterStates.Stopped,
+        SFXEnabled = true,
         Content = content or "",
         TypeInterval = 0.1,
         Finished = GoodSignal.new(),
@@ -254,12 +263,13 @@ function TypeWriter.new(content: string) : TypeWriter
                     break;
                 elseif target then
                     target.Text = target.Text.._content:sub(i,i);
-                    
+
                     -- Play type sound for client
                     if not TypeSound.IsLoaded then
                         TypeSound.Loaded:Wait();
                     end
-                    TypeSound:Play();
+                    if writer.SFXEnabled then TypeSound:Play(); end
+
                 end
 
                 if i == contLen then
