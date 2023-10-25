@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[60],{63891:e=>{e.exports=JSON.parse('{"sourceUrl":"https://github.com/dev-syn/rbx-typewriter/blob/main","baseUrl":"/rbx-typewriter/","classOrder":["TypeWriter"],"apiCategories":[]}')}}]);
