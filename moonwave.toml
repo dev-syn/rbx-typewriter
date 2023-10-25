@@ -1,5 +1,5 @@
 gitSourceBranch = "main"
-changelog = false
+changelog = true
 classOrder = [
     "TypeWriter"
 ]
