@@ -84,5 +84,7 @@ writer:Write();
 - `writer.Skipped:` This event is fired when the TypeWriter was skipped.
 - `writer.Stopped:` This event is fired when the TypeWriter has been stopped externally.
 
+If you want to use types for the events you can use my exported type: `TypeWriter.GoodSignal`
+
 ## Documentation
 https://dev-syn.github.io/rbx-typewriter/
