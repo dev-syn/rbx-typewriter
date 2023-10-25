@@ -44,6 +44,8 @@ print("    Stopping...");
 writer:StopSync();
 print(coroutine.status(writer._thread));
 
+writer.TypeInterval = 0.1;
+writer.SetPlaybackSpeed(1.7);
 warn("Start TypeWriter: ");
 print("    Writing...");
 writer:Write();
