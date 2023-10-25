@@ -92,6 +92,7 @@ local WriterStates: WriterStates = {
     @prop WriterStates IWriterStates
     @within TypeWriter
     @tag enum-like
+    @private
 ]=]
 TypeWriter._WriterStates = WriterStates;
 
