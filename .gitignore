@@ -1,5 +1,6 @@
 *.rbxlx
 *.rbxlx.lock
+build/
 .vscode/
 Packages/
 DevPackages/
