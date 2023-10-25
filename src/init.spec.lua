@@ -26,26 +26,30 @@ return function()
     it("should create a TypeWriter object",function(context: Context)
         writer = TypeWriter.new("Some test content to be typed out.");
         writer.TargetElement = context.textLabel;
+        writer.TypeInterval = 0.2;
         expect(writer).to.be.ok();
     end);
 
-    it ("should be able to start writing with the TypeWriter",function()
-        expect(writer:Write()).never.to.throw();
-        writer.Finished:Wait();
-        expect(writer.Finished:DisconnectAll()).to.be.ok();
-    end);
-
     it("should be able to skip the TypeWriter",function()
-        expect(writer:Write()).never.to.throw();
-        writer:Skip();
+        writer:Write();
+        writer:SkipSync();
         expect(writer.TargetElement.Text).to.be.equal(writer.Content);
     end);
 
     it("should be able to stop the TypeWriter",function()
-        expect(writer:Write()).never.to.throw();
-        writer.Stopped:Once(function()
-            warn("The TypeWriter has been stopped.");
-        end);
-        expect(writer:Stop()).to.be.ok();
+        writer:Write();
+        writer:StopSync();
+        expect(writer._isWriting).to.be.equal(false);
+    end);
+
+    it ("should be able to start writing with the TypeWriter",function()
+        writer:Write();
+        writer.Finished:Wait();
+        expect(writer._isWriting).to.be.equal(false);
+    end);
+
+    it("should be able to clean up the TypeWriter",function()
+        writer:Destroy();
+        writer = nil::any;
     end);
 end
