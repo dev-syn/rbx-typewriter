@@ -108,6 +108,9 @@ function TypeWriter.GetDefaultSoundID(): string
     return DEFAULT_TYPE_SFX;
 end
 
+--[=[
+    Sets the [Sound.SoundId] of the 'TypeSound' Sound Instance to the given id.
+]=]
 function TypeWriter.SetSoundID(id: string)
     TypeSound.SoundId = id;
 end
