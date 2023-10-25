@@ -10,6 +10,7 @@ export type Schema_TypeWriter = {
 
     GetDefaultSoundID: () -> string,
     SetSoundID: (id: string) -> (),
+    SetPlaybackSpeed: (speed: number) -> (),
     new: (content: string) -> TypeWriter,
     SetContent: (self: TypeWriter,content: string) -> (),
     Write: (self: TypeWriter) -> (),
@@ -38,6 +39,7 @@ type TypeWriterObj = {
     Content: string,
     TargetElement: TextLabel?,
     TypeInterval: number,
+    MatchSFX: boolean?,
     Finished: GoodSignal,
     Skipped: GoodSignal,
     Stopped: GoodSignal
@@ -112,7 +114,16 @@ end
     Sets the [Sound.SoundId] of the 'TypeSound' Sound Instance to the given id.
 ]=]
 function TypeWriter.SetSoundID(id: string)
+    TypeWriter.SetPlaybackSpeed(1);
     TypeSound.SoundId = id;
+end
+
+--[=[
+    Allows changing the playback speed of the 'TypeSound' Sound Instance.
+    This helps control [TypeWriter.MatchSFX].
+]=]
+function TypeWriter.SetPlaybackSpeed(speed: number)
+    TypeSound.PlaybackSpeed = math.clamp(speed,0,20);
 end
 
 --[=[
@@ -197,6 +208,17 @@ function TypeWriter.new(content: string) : TypeWriter
         ]=]
 
         --[=[
+            Whether the TypeWriter TypeInterval should instead be based off the 'TypeSound' aligning the type with the sound. Defaults to false.
+            :::caution
+            I haven't managed to get this to function properly but it is something I will try to improve so for now
+            it is better to just do manual timing with playback speed modifiers.
+            :::
+
+            @prop MatchSFX boolean?
+            @within TypeWriter
+        ]=]
+
+        --[=[
             This event is fired when the TypeWriter has finished processing the content.
 
             @prop Finished GoodSignal
@@ -265,21 +287,27 @@ function TypeWriter.new(content: string) : TypeWriter
                     writer._state = WriterStates.Skipped;
                     break;
                 elseif target then
-                    target.Text = target.Text.._content:sub(i,i);
+                    if writer.SFXEnabled then
+                        -- Play type sound for client
+                        if not TypeSound.IsLoaded then
+                            TypeSound.Loaded:Wait();
+                        end
+                        TypeSound:Play();
 
-                    -- Play type sound for client
-                    if not TypeSound.IsLoaded then
-                        TypeSound.Loaded:Wait();
+                        if writer.MatchSFX and TypeSound.Playing then
+                            TypeSound.Ended:Wait();
+                        end
+                        target.Text = target.Text.._content:sub(i,i);
+                    else
+                        target.Text = target.Text.._content:sub(i,i);
                     end
-                    if writer.SFXEnabled then TypeSound:Play(); end
-
                 end
 
                 if i == contLen then
                     writer._state = WriterStates.Finished;
                     writer.Finished:Fire();
                 else
-                    task.wait(writer.TypeInterval);
+                    task.wait(writer.MatchSFX and 0 or writer.TypeInterval);
                 end
             end
 
@@ -439,5 +467,8 @@ function TypeWriter:Destroy()
         end,self);
     end
 end
+
+-- Set to this speed to work better with default 'TypeSound'.
+TypeWriter.SetPlaybackSpeed(1.7);
 
 return TypeWriter::Schema_TypeWriter;
