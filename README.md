@@ -5,7 +5,6 @@ A Roblox module designed to simulate a Type Writer effect on a TextLabel Instanc
 - Set your own interval at which the characters are typed
 - Play a custom sound for each individual TypeWriter object
 
-
 ## Creating a TypeWriter
 
 ```lua
@@ -84,3 +83,6 @@ writer:Write();
 - `writer.Finished:` This event is fired when the TypeWriter has finished writing it's content.
 - `writer.Skipped:` This event is fired when the TypeWriter was skipped.
 - `writer.Stopped:` This event is fired when the TypeWriter has been stopped externally.
+
+## Documentation
+https://dev-syn.github.io/rbx-typewriter/
