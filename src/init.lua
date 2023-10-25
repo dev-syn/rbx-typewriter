@@ -1,21 +1,15 @@
 --!strict
 
 local T_GoodSignal = require(script["@types"].GoodSignal);
-type GoodSignal = T_GoodSignal.GoodSignal;
-
-local GoodSignal = require(script.Parent.GoodSignal) :: T_GoodSignal.Schema_GoodSignal;
-
---[=[
-    @class TypeWriter
-
-    A module that allows simulating a Type Writer effect on a given TextLabel Instance.
-]=]
+export type GoodSignal = T_GoodSignal.GoodSignal;
 
 export type Schema_TypeWriter = {
     __index: Schema_TypeWriter,
+    _WriterStates: WriterStates,
     ClassName: "TypeWriter",
-    WriterStates: WriterStates,
 
+    GetDefaultSoundID: () -> string,
+    SetSoundID: (id: string) -> (),
     new: (content: string) -> TypeWriter,
     SetContent: (self: TypeWriter,content: string) -> (),
     Write: (self: TypeWriter) -> (),
@@ -50,18 +44,22 @@ type TypeWriterObj = {
 
 export type TypeWriter = typeof(setmetatable({} :: TypeWriterObj,{} :: Schema_TypeWriter));
 
+
+local DEFAULT_TYPE_SFX: string = "rbxassetid://9120300060";
 local LogPrefix: string = "[TypeWriter]:";
 
-local TypeWriter: Schema_TypeWriter = {} :: Schema_TypeWriter;
-TypeWriter.__index = TypeWriter;
+local TypeSound: Sound = script.TypeSound;
+TypeSound.SoundId = DEFAULT_TYPE_SFX;
+
+local GoodSignal = require(script.Parent.GoodSignal) :: T_GoodSignal.Schema_GoodSignal;
 
 --[=[
-    The ClassName of this class.
+    @class TypeWriter
 
-    @prop ClassName "TypeWriter"
-    @within TypeWriter
+    A module that allows simulating a Type Writer effect on a given TextLabel Instance.
 ]=]
-TypeWriter.ClassName = "TypeWriter";
+local TypeWriter: Schema_TypeWriter = {} :: Schema_TypeWriter;
+TypeWriter.__index = TypeWriter;
 
 --[=[
     @interface IWriterStates
@@ -92,7 +90,26 @@ local WriterStates: WriterStates = {
     @within TypeWriter
     @tag enum-like
 ]=]
-TypeWriter.WriterStates = WriterStates;
+TypeWriter._WriterStates = WriterStates;
+
+--[=[
+    The ClassName of this class.
+
+    @prop ClassName "TypeWriter"
+    @within TypeWriter
+]=]
+TypeWriter.ClassName = "TypeWriter";
+
+--[=[
+    Gets the default TypeWriter type sound effect.
+]=]
+function TypeWriter.GetDefaultSoundID(): string
+    return DEFAULT_TYPE_SFX;
+end
+
+function TypeWriter.SetSoundID(id: string)
+    TypeSound.SoundId = id;
+end
 
 --[=[
     Creates a new TypeWriter object.
@@ -237,7 +254,12 @@ function TypeWriter.new(content: string) : TypeWriter
                     break;
                 elseif target then
                     target.Text = target.Text.._content:sub(i,i);
-                    -- TODO: Play type sound for client
+                    
+                    -- Play type sound for client
+                    if not TypeSound.IsLoaded then
+                        TypeSound.Loaded:Wait();
+                    end
+                    TypeSound:Play();
                 end
 
                 if i == contLen then
