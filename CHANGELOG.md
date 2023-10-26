@@ -7,18 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.2] - 2023-10-26
+### Changed
+- Use task.defer instead of task.spawn inside :Destroy()
+### Fixed
+- Project name inconsistency between project.json and wally.toml
 ## [0.1.1] - 2023-10-25
-
 ### Added
 - Add missing Skipped event call inside TypeWriter._thread
 ### Removed
 - Documentation build directory from wally package
 - TestRunner script from wally package
-### Fixed
-- Project name inconsistency between project.json and wally.toml
 ## [0.1.0] - 2023-10-24
 
-[unreleased] -> [rbx-typewriter/compare/v0.1.1...HEAD](https://github.com/dev-syn/rbx-typewriter/compare/v0.1.1-alpha...HEAD#main)
+[unreleased] -> [rbx-typewriter/compare/v0.1.2...HEAD](https://github.com/dev-syn/rbx-typewriter/compare/v0.1.2-alpha...HEAD#main)
+
+[0.1.2-alpha] -> [rbx-typewriter/compare/v0.1.1...v0.1.2](https://github.com/dev-syn/rbx-typewriter/compare/v0.1.1-alpha...v0.1.2-alpha)
 
 [0.1.1-alpha] -> [rbx-typewriter/compare/v0.1.0...v0.1.1](https://github.com/dev-syn/rbx-typewriter/compare/v0.1.0-alpha...v0.1.1-alpha)
 
