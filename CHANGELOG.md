@@ -14,7 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - Documentation build directory from wally package
 - TestRunner script from wally package
-
+### Fixed
+- Project name inconsistency between project.json and wally.toml
 ## [0.1.0] - 2023-10-24
 
 [unreleased] -> [rbx-typewriter/compare/v0.1.1...HEAD](https://github.com/dev-syn/rbx-typewriter/compare/v0.1.1-alpha...HEAD#main)

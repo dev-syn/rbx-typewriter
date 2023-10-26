@@ -1,5 +1,5 @@
 {
-    "name": "TypeWriter",
+    "name": "rbx-typewriter",
     "globIgnorePaths": ["**/*.spec.lua"],
     "tree": { "$path": "src" }
 }
