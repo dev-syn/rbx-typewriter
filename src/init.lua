@@ -286,6 +286,7 @@ function TypeWriter.new(content: string) : TypeWriter
                     end
 
                     writer._state = WriterStates.Skipped;
+                    writer.Skipped:Fire();
                     break;
                 elseif target then
                     if writer.SFXEnabled then
