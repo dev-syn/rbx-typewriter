@@ -442,9 +442,10 @@ function TypeWriter:Destroy()
     self._isWriting = false;
 
     if self._thread then
-        task.spawn(function(writer: TypeWriter)
+        task.defer(function(writer: TypeWriter)
             -- Yield until the thread is suspended
-            repeat task.wait() until not writer._thread or coroutine.status(writer._thread) == "suspended";
+            repeat task.wait();
+            until (not writer._thread or coroutine.status(writer._thread) == "suspended");
 
             if writer._thread then
                 coroutine.close(writer._thread);
@@ -452,20 +453,20 @@ function TypeWriter:Destroy()
             end
 
             -- I need to clean up the events here since they are fired within the writer thread
-            if self.Finished then
-                self.Finished:DisconnectAll();
-                self.Finished = nil::any;
+            if writer.Finished then
+                writer.Finished:DisconnectAll();
+                writer.Finished = nil::any;
             end
-            if self.Skipped then
-                self.Skipped:DisconnectAll();
-                self.Skipped = nil::any;
+            if writer.Skipped then
+                writer.Skipped:DisconnectAll();
+                writer.Skipped = nil::any;
             end
-            if self.Stopped then
-                self.Stopped:DisconnectAll();
-                self.Stopped = nil::any;
+            if writer.Stopped then
+                writer.Stopped:DisconnectAll();
+                writer.Stopped = nil::any;
             end
 
-            self.TargetElement = nil;
+            writer.TargetElement = nil;
         end,self);
     end
 end
